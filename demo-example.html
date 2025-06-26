@@ -1,0 +1,612 @@
+<html lang="th"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Project H Muay Thai Gym - Digital Transformation Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #000000;
+            color: #EAEAEA;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-arrow {
+            color: #FF4136;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-card {
+             background-color: #1C1C1C;
+             border-radius: 1rem;
+             padding: 2rem 2.5rem;
+             border: 1px solid #333333;
+        }
+        .accent-gradient-text {
+            background: linear-gradient(90deg, #FF4136, #FF851B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .stat-card {
+            background-color: #222222;
+            border-left: 4px solid #FF4136;
+        }
+        .dashboard-mockup {
+            background-color: #222;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .benefit-card {
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #333;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -17px;
+            background-color: #1c1c1c;
+            border: 4px solid #FF4136;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .timeline-left {
+            left: 0;
+        }
+        .timeline-right {
+            left: 50%;
+        }
+        .timeline-right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #222;
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid #444;
+        }
+         @media screen and (max-width: 768px) {
+            .timeline-container::after {
+                left: 35px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .timeline-left, .timeline-right {
+                left: 0%;
+            }
+            .timeline-left::after, .timeline-right::after {
+                left: 20px;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.visible{visibility:visible}.mx-2{margin-left:0.5rem;margin-right:0.5rem}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.h-24{height:6rem}.h-64{height:16rem}.h-\[300px\]{height:300px}.h-px{height:1px}.max-h-\[400px\]{max-height:400px}.w-16{width:4rem}.w-24{width:6rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-7xl{max-width:80rem}.max-w-xs{max-width:20rem}.rotate-90{--tw-rotate:90deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-around{justify-content:space-around}.gap-12{gap:3rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-16 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(4rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(4rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-t{border-top-width:1px}.border-t-4{border-top-width:4px}.border-dashed{border-style:dashed}.border-\[\#555\]{--tw-border-opacity:1;border-color:rgb(85 85 85 / var(--tw-border-opacity, 1))}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.bg-\[\#1c1c1c\]{--tw-bg-opacity:1;background-color:rgb(28 28 28 / var(--tw-bg-opacity, 1))}.bg-\[\#222\]{--tw-bg-opacity:1;background-color:rgb(34 34 34 / var(--tw-bg-opacity, 1))}.bg-\[\#333\]{--tw-bg-opacity:1;background-color:rgb(51 51 51 / var(--tw-bg-opacity, 1))}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-red-500{--tw-gradient-from:#ef4444 var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 68 68 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-orange-500{--tw-gradient-to:#f97316 var(--tw-gradient-to-position)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-100{--tw-text-opacity:1;color:rgb(254 226 226 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-red-900\/20{--tw-shadow-color:rgb(127 29 29 / 0.2);--tw-shadow:var(--tw-shadow-colored)}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 768px){.md\:my-0{margin-top:0px;margin-bottom:0px}.md\:hidden{display:none}.md\:h-72{height:18rem}.md\:h-\[350px\]{height:350px}.md\:w-1\/2{width:50%}.md\:w-1\/4{width:25%}.md\:w-full{width:100%}.md\:rotate-0{--tw-rotate:0deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.md\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}.md\:p-8{padding:2rem}.md\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:col-span-3{grid-column:span 3 / span 3}.lg\:mb-0{margin-bottom:0px}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}}</style></head>
+<body class="antialiased">
+
+    <!-- 
+        Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. 
+        Theme: Vibrant Dark.
+        Update: Added a new "Smart Step" infographic and updated the "Key Benefits" section to 6 items.
+    -->
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-16 scroll-reveal visible">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-3"><span class="accent-gradient-text">Smart</span> Project H Muay Thai Gym</h1>
+            <p class="text-xl text-gray-400">ข้อเสนอโครงการปฏิรูปสู่ดิจิทัล</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="summary" class="section-card scroll-reveal visible">
+                <h2 class="text-3xl font-bold text-center mb-4 text-white">บทสรุปสำหรับผู้บริหาร</h2>
+                <p class="text-center text-lg text-gray-400 max-w-4xl mx-auto mb-8">
+                    เรานำเสนอโซลูชันเทคโนโลยีแบบบูรณาการเพื่อแก้ไขความท้าทายปัจจุบันและวางรากฐานการเติบโตอย่างยั่งยืน โดยเปลี่ยนกระบวนการที่ซับซ้อนให้เป็นระบบอัตโนมัติ ยกระดับประสบการณ์สมาชิก ขับเคลื่อนธุรกิจด้วยข้อมูล และสร้างช่องทางการรับฟังเสียงของลูกค้าผ่าน<span class="text-white">ระบบประเมินความพึงพอใจ</span>เพื่อนำมาพัฒนาบริการอย่างต่อเนื่อง
+                </p>
+            </section>
+
+            <section id="challenges" class="section-card scroll-reveal visible">
+                <h2 class="text-3xl font-bold text-center mb-6 text-white">สถานการณ์ปัจจุบันและ<span class="accent-gradient-text">ความท้าทาย</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-[#222] p-6 rounded-lg">
+                       <h3 class="text-xl font-semibold text-white mb-2">กระบวนการที่ต้องพึ่งพนักงาน</h3>
+                       <p class="text-gray-400">ภาระงานเอกสาร การเช็คอิน และการตัดเครดิตคลาสด้วยมือ สร้างภาระงานซ้ำซ้อน ล่าช้า และเสี่ยงต่อข้อผิดพลาดสูง</p>
+                    </div>
+                    <div class="bg-[#222] p-6 rounded-lg">
+                       <h3 class="text-xl font-semibold text-white mb-2">ข้อมูลที่กระจัดกระจาย</h3>
+                       <p class="text-gray-400">ข้อมูลลูกค้าไม่เป็นศูนย์กลาง ทำให้ไม่สามารถสร้างมุมมอง 360 องศา และมอบบริการเชิงรุกได้</p>
+                    </div>
+                    <div class="bg-[#222] p-6 rounded-lg">
+                       <h3 class="text-xl font-semibold text-white mb-2">ขาดข้อมูลเชิงลึกทางธุรกิจ</h3>
+                       <p class="text-gray-400">ผู้บริหารขาด Dashboard สรุปผลแบบ Real-time ทำให้การตัดสินใจต้องอาศัยสัญชาตญาณมากกว่าข้อมูลจริง</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="solution" class="section-card scroll-reveal visible">
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">ข้อเสนอโซลูชัน: <span class="accent-gradient-text">ระบบนิเวศดิจิทัล</span>ครบวงจร</h2>
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-center mb-6 text-white">ภาพรวมสถาปัตยกรรมระบบ</h3>
+                     <div class="flex flex-col md:flex-row items-start justify-center gap-4 text-center p-4 bg-[#222] rounded-lg">
+                        <div class="w-full md:w-1/4 p-4">
+                            <h4 class="text-lg font-bold text-white mb-4">ลูกค้า (Members)</h4>
+                            <div class="bg-[#1c1c1c] p-3 rounded-lg border border-gray-600">
+                                <p class="font-semibold text-white">LINE LIFF</p>
+                                <p class="text-xs text-gray-400">จองคลาส, ดูโปรไฟล์, สะสมแต้ม, ประเมินความพึงพอใจ</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 p-4 flex flex-col items-center">
+                             <div class="flex items-center my-4 md:my-0">
+                                <div class="w-16 h-px bg-gray-600 md:w-full"></div>
+                                <div class="flow-arrow mx-2 transform rotate-90 md:rotate-0">→</div>
+                                <div class="w-16 h-px bg-gray-600 md:hidden"></div>
+                            </div>
+                            <div class="w-full p-6 bg-gradient-to-r from-red-500 to-orange-500 text-black rounded-lg shadow-lg shadow-red-900/20 mb-4">
+                                <h3 class="text-xl font-bold">Backend System</h3>
+                                <p class="text-sm text-red-100">Business Logic &amp; API</p>
+                            </div>
+                             <div class="flow-arrow transform rotate-90 mb-2">↓</div>
+                            <div class="w-full bg-[#1c1c1c] p-3 rounded-lg border-2 border-dashed border-[#555]">
+                               <p class="font-semibold text-white">Centralized Database</p>
+                               <p class="text-xs text-gray-400">ข้อมูลลูกค้า, การขาย, คลาส, สต็อก, Feedback</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/4 p-4">
+                            <h4 class="text-lg font-bold text-white mb-4">พนักงาน/ผู้บริหาร</h4>
+                            <div class="bg-[#1c1c1c] p-3 rounded-lg border border-gray-600 mb-4">
+                                <p class="font-semibold text-white">Backend Portal</p>
+                                <p class="text-xs text-gray-400">จัดการข้อมูล, การขาย, รายงาน</p>
+                            </div>
+                            <div class="bg-[#1c1c1c] p-3 rounded-lg border border-gray-600">
+                                <p class="font-semibold text-white">Dashboards</p>
+                                <p class="text-xs text-gray-400">ภาพรวมธุรกิจ, วิเคราะห์ข้อมูล</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="face-scanner-tech" class="section-card scroll-reveal">
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">เทคโนโลยีเช็คอินอัจฉริยะ: <span class="accent-gradient-text">The Future of Check-in</span></h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://i.ibb.co/tZ5GZJc/suprema-facelite.png" alt="เครื่องสแกนใบหน้า Suprema FaceLite" class="rounded-lg w-full max-w-xs mx-auto shadow-lg shadow-red-900/20 mb-8 lg:mb-0">
+                    </div>
+                    <div>
+                        <p class="text-gray-400 mb-6">เรานำเสนอเครื่องเช็คอินอัจฉริยะที่รวมเทคโนโลยีการสแกนใบหน้า (Face Scan) และ RFID ไว้ในเครื่องเดียว เพื่อมอบประสบการณ์ที่รวดเร็ว ปลอดภัย และไร้การสัมผัส</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 font-bold mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Face Scan</h4>
+                                    <p class="text-gray-400 text-sm">เช็คอินเข้ายิมและคลาสเรียนด้วยใบหน้าใน 1 วินาที</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 font-bold mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">RFID Access</h4>
+                                    <p class="text-gray-400 text-sm">ใช้บัตรสมาชิกหรืออุปกรณ์ RFID อื่นๆ เป็นทางเลือกในการเข้ารับบริการ</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 font-bold mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Automated System</h4>
+                                    <p class="text-gray-400 text-sm">ระบบจะบันทึกการเข้าใช้และตัดชั่วโมงให้โดยอัตโนมัติ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="smart-steps" class="section-card scroll-reveal">
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">Smart Step for <span class="accent-gradient-text">Smart Member</span></h2>
+                <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-8 text-center">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center text-4xl font-bold text-black mb-4">1</div>
+                        <h3 class="text-lg font-semibold text-white">ปลายนิ้วจองคลาส</h3>
+                        <p class="text-gray-400 max-w-xs">จองคลาสเรียนล่วงหน้าได้ทุกที่ทุกเวลาผ่าน LINE</p>
+                    </div>
+                    <div class="flow-arrow transform rotate-90 md:rotate-0">→</div>
+                    <!-- Step 2 -->
+                     <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center text-4xl font-bold text-black mb-4">2</div>
+                        <h3 class="text-lg font-semibold text-white">เพียงพริบตาเดียว</h3>
+                        <p class="text-gray-400 max-w-xs">เดินมาสแกนใบหน้าหน้าคลาส ระบบยืนยันตัวตนใน 1 วินาที</p>
+                    </div>
+                    <div class="flow-arrow transform rotate-90 md:rotate-0">→</div>
+                    <!-- Step 3 -->
+                     <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center text-4xl font-bold text-black mb-4">3</div>
+                        <h3 class="text-lg font-semibold text-white">รับสิทธิ์ทันที</h3>
+                        <p class="text-gray-400 max-w-xs">ระบบตัดเครดิตและสะสมแต้มให้อัตโนมัติ พร้อมเข้าคลาสได้เลย!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="key-benefits" class="scroll-reveal">
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">ปลดล็อกศักยภาพสูงสุดด้วย <span class="accent-gradient-text">6 คุณประโยชน์หลัก</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="benefit-card" style="border-top: 4px solid #FFC300;">
+                        <div class="text-5xl mb-4">⭐</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Elevated Experience</h3>
+                        <p class="text-gray-400 text-sm">สร้างความประทับใจและความสะดวกสบายที่เหนือชั้นในทุกขั้นตอน</p>
+                    </div>
+                    <div class="benefit-card" style="border-top: 4px solid #00A8E8;">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Maximized Efficiency</h3>
+                        <p class="text-gray-400 text-sm">ลดภาระงาน Manual ให้พนักงานโฟกัสกับการบริการลูกค้ามากขึ้น</p>
+                    </div>
+                     <div class="benefit-card" style="border-top: 4px solid #3D9970;">
+                        <div class="text-5xl mb-4">📈</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Data-Driven Growth</h3>
+                        <p class="text-gray-400 text-sm">ใช้ข้อมูลจากแดชบอร์ดในการตัดสินใจทางธุรกิจเพื่อการเติบโตที่ยั่งยืน</p>
+                    </div>
+                    <div class="benefit-card" style="border-top: 4px solid #F012BE;">
+                        <div class="text-5xl mb-4">🛡️</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Enhanced Security</h3>
+                        <p class="text-gray-400 text-sm">สร้างความเชื่อมั่นให้ลูกค้าด้วยระบบที่ปลอดภัยและได้มาตรฐาน PDPA</p>
+                    </div>
+                    <div class="benefit-card" style="border-top: 4px solid #9A48D2;">
+                        <div class="text-5xl mb-4">♻️</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Higher Retention</h3>
+                        <p class="text-gray-400 text-sm">เพิ่มอัตราการกลับมาใช้ซ้ำของสมาชิกผ่านประสบการณ์ที่เหนือกว่า</p>
+                    </div>
+                    <div class="benefit-card" style="border-top: 4px solid #FF4136;">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Premium Brand Image</h3>
+                        <p class="text-gray-400 text-sm">เสริมสร้างภาพลักษณ์แบรนด์ที่โดดเด่นในฐานะผู้นำด้าน Fitness Technology</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="dashboards" class="section-card scroll-reveal">
+                 <h2 class="text-3xl font-bold text-center mb-8 text-white">แดชบอร์ดอัจฉริยะ <span class="accent-gradient-text">ขับเคลื่อนธุรกิจ</span></h2>
+                 
+                 <div class="dashboard-mockup mt-8">
+                     <h3 class="text-xl font-semibold text-white mb-6 text-center">ตัวอย่างแดชบอร์ดสำหรับผู้บริหาร</h3>
+                     
+                     <!-- KPI Cards -->
+                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8">
+                        <div class="bg-[#333] p-4 rounded-lg">
+                            <p class="text-sm text-gray-400">ลูกค้าใหม่ (เดือนนี้)</p>
+                            <p class="text-3xl font-bold text-blue-400 mt-1">45</p>
+                        </div>
+                        <div class="bg-[#333] p-4 rounded-lg">
+                            <p class="text-sm text-gray-400">รายได้รวม (เดือนนี้)</p>
+                            <p class="text-3xl font-bold text-green-400 mt-1">฿3M</p>
+                        </div>
+                        <div class="bg-[#333] p-4 rounded-lg">
+                            <p class="text-sm text-gray-400">อัตราการจองคลาส</p>
+                            <p class="text-3xl font-bold text-purple-400 mt-1">85%</p>
+                        </div>
+                        <div class="bg-[#333] p-4 rounded-lg">
+                            <p class="text-sm text-gray-400">สมาชิกที่ใช้งาน</p>
+                            <p class="text-3xl font-bold text-orange-400 mt-1">350</p>
+                        </div>
+                     </div>
+
+                     <!-- Charts -->
+                     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                         <div class="lg:col-span-2">
+                             <h4 class="text-lg font-semibold text-white mb-4 text-center">รายได้ตามประเภทคอร์ส</h4>
+                             <div class="chart-container h-64 md:h-72">
+                                 <canvas id="revenueByCourseChart" width="414" height="288" style="display: block; box-sizing: border-box; height: 288px; width: 414px;"></canvas>
+                             </div>
+                         </div>
+                         <div class="lg:col-span-3">
+                              <h4 class="text-lg font-semibold text-white mb-4 text-center">สถิติการเช็คอินรายสัปดาห์</h4>
+                              <div class="chart-container h-64 md:h-72">
+                                 <canvas id="weeklyCheckinChart" width="600" height="288" style="display: block; box-sizing: border-box; height: 288px; width: 600px;"></canvas>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+
+            <section id="measurable-results" class="scroll-reveal">
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">ผลลัพธ์ที่<span class="accent-gradient-text">วัดผลได้</span></h2>
+                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="section-card">
+                        <h3 class="text-2xl font-semibold text-center mb-4 text-white">ประสิทธิภาพการดำเนินงาน</h3>
+                        <div class="chart-container">
+                            <canvas id="efficiencyChart" width="510" height="350" style="display: block; box-sizing: border-box; height: 350px; width: 510px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <h3 class="text-2xl font-semibold text-center mb-4 text-white">การมีส่วนร่วมของสมาชิก</h3>
+                        <div class="chart-container">
+                            <canvas id="engagementChart" width="510" height="350" style="display: block; box-sizing: border-box; height: 350px; width: 510px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="section-card lg:col-span-2">
+                        <h3 class="text-2xl font-semibold text-center mb-4 text-white">การเติบโตทางธุรกิจ</h3>
+                        <div class="chart-container h-[300px] md:h-[350px] max-h-[400px]">
+                            <canvas id="growthChart" width="600" height="350" style="display: block; box-sizing: border-box; height: 350px; width: 600px;"></canvas>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section id="roadmap" class="section-card scroll-reveal">
+                 <h2 class="text-3xl font-bold text-center mb-10 text-white">แผนการดำเนินงาน <span class="accent-gradient-text">120 วัน</span></h2>
+                 <div class="timeline-container">
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <p class="text-sm text-gray-400">Phase 1 - 15 วัน</p>
+                            <h3 class="text-lg font-bold text-white mt-1">Discovery &amp; Design</h3>
+                            <p class="text-sm text-gray-300 mt-2">วิเคราะห์ Requirement, ออกแบบสถาปัตยกรรมและ UX/UI, วางแผนละเอียด</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-right">
+                        <div class="timeline-content">
+                             <p class="text-sm text-gray-400">Phase 2 - 45 วัน</p>
+                             <h3 class="text-lg font-bold text-white mt-1">Development &amp; Integration</h3>
+                             <p class="text-sm text-gray-300 mt-2">พัฒนาระบบหลังบ้าน, Frontend สำหรับลูกค้าและเจ้าหน้าที่, และเชื่อมต่อระบบทั้งหมด</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <p class="text-sm text-gray-400">Phase 3 - 20 วัน</p>
+                            <h3 class="text-lg font-bold text-white mt-1">Testing &amp; Deployment</h3>
+                            <p class="text-sm text-gray-300 mt-2">ทดสอบระบบโดยรวม (UAT), ติดตั้งเครื่องสแกนใบหน้า และอบรมทีมงาน</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-right">
+                        <div class="timeline-content">
+                            <p class="text-sm text-gray-400">Phase 4 - 10+ วัน</p>
+                            <h3 class="text-lg font-bold text-white mt-1">Launch &amp; Support</h3>
+                            <p class="text-sm text-gray-300 mt-2">เปิดใช้งานเต็มรูปแบบ, เฝ้าระวังและสนับสนุนช่วงเปิดตัว, เริ่มสัญญาดูแลระบบ</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+            
+            <section id="conclusion" class="section-card scroll-reveal text-center border-t-4 border-red-500">
+                 <h2 class="text-3xl font-bold mb-4 text-white">สรุปการลงทุนเชิง<span class="accent-gradient-text">กลยุทธ์</span></h2>
+                 <p class="text-lg text-gray-400 max-w-4xl mx-auto">
+                    การลงทุนครั้งนี้คือการสร้างความได้เปรียบในการแข่งขันที่ยั่งยืน เราเชื่อมั่นว่าโซลูชันนี้จะช่วยปลดล็อกศักยภาพการเติบโต และส่งมอบประสบการณ์ที่ดีที่สุดให้แก่สมาชิก ทีมงานของเราพร้อมที่จะร่วมเป็นพันธมิตรกับท่านในการเดินทางสู่การเปลี่ยนแปลงครั้งสำคัญนี้
+                 </p>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-800">
+            <p class="text-gray-500">เอกสารนำเสนอโครงการสำหรับ Smart Project H Muay Thai Gym</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Scroll Reveal Animation ---
+        const scrollRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => scrollRevealObserver.observe(el));
+
+        // --- Chart.js Implementation ---
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            return Array.isArray(label) ? label.join(' ') : label;
+        };
+        
+        const chartTextColor = '#EAEAEA';
+        const chartGridColor = 'rgba(255, 255, 255, 0.1)';
+        const vibrantPalette = ['#FF4136', '#00A8E8', '#FFC300', '#9A48D2', '#3D9970', '#F012BE'];
+
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: chartTextColor, font: { family: "'Kanit', sans-serif" } }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleColor: '#FFFFFF',
+                    bodyColor: '#EAEAEA',
+                    callbacks: { title: tooltipTitleCallback },
+                    bodyFont: { family: "'Kanit', sans-serif" },
+                    titleFont: { family: "'Kanit', sans-serif", weight: 'bold' }
+                }
+            }
+        };
+        
+        // --- Existing Charts ---
+        new Chart(document.getElementById('efficiencyChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['เวลาที่ประหยัดได้จากระบบอัตโนมัติ', 'เวลาทำงานเดิม'],
+                datasets: [{
+                    label: 'ประสิทธิภาพ',
+                    data: [95, 5],
+                    backgroundColor: [vibrantPalette[0], '#333'],
+                    borderColor: '#1C1C1C',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: { ...sharedChartOptions, cutout: '70%' }
+        });
+        
+        new Chart(document.getElementById('engagementChart'), {
+            type: 'bar',
+            data: {
+                labels: ['บริการตนเอง 24/7', 'คำแนะนำส่วนตัว', 'โปรแกรมสะสมแต้ม'],
+                datasets: [{
+                    label: 'ระดับการสร้างความผูกพัน',
+                    data: [95, 85, 90],
+                    backgroundColor: [vibrantPalette[1], vibrantPalette[3], vibrantPalette[4]],
+                    borderRadius: 5,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: { beginAtZero: true, grid: { color: chartGridColor }, ticks: { color: chartTextColor } },
+                    y: { grid: { display: false }, ticks: { color: chartTextColor } }
+                },
+                plugins: { ...sharedChartOptions.plugins, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('growthChart'), {
+            type: 'line',
+            data: {
+                labels: ['ก่อนติดตั้ง', 'Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'อัตราการรักษาลูกค้า (Retention Rate)',
+                    data: [65, 75, 82, 88, 92],
+                    borderColor: vibrantPalette[0],
+                    backgroundColor: 'rgba(255, 65, 54, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: vibrantPalette[0],
+                    pointRadius: 5
+                }, {
+                    label: 'รายได้เฉลี่ยต่อสมาชิก (ARPU)',
+                    data: [100, 110, 118, 125, 135],
+                    borderColor: vibrantPalette[2],
+                    backgroundColor: 'rgba(255, 195, 0, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: vibrantPalette[2],
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    y: { beginAtZero: false, grid: { color: chartGridColor }, ticks: { color: chartTextColor } },
+                    x: { grid: { display: false }, ticks: { color: chartTextColor } }
+                }
+            }
+        });
+
+        // --- New Executive Dashboard Charts ---
+        new Chart(document.getElementById('revenueByCourseChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['คอร์สส่วนตัว', 'คอร์สกลุ่ม', 'ทดลองเรียน', 'ขายสินค้า'],
+                datasets: [{
+                    data: [45, 35, 15, 5],
+                    backgroundColor: vibrantPalette,
+                    borderColor: '#222',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            },
+            options: { ...sharedChartOptions, cutout: '60%' }
+        });
+
+        new Chart(document.getElementById('weeklyCheckinChart'), {
+            type: 'line',
+            data: {
+                labels: ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์'],
+                datasets: [{
+                    label: 'จำนวนการเช็คอิน',
+                    data: [30, 45, 55, 50, 65, 80, 75],
+                    borderColor: vibrantPalette[0],
+                    backgroundColor: 'rgba(255, 65, 54, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: vibrantPalette[0],
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                plugins: {...sharedChartOptions.plugins, legend: {display: false}},
+                scales: {
+                    y: { beginAtZero: true, grid: { color: chartGridColor }, ticks: { color: chartTextColor } },
+                    x: { grid: { color: chartGridColor }, ticks: { color: chartTextColor } }
+                }
+            }
+        });
+
+    </script>
+
+
+</body></html>
