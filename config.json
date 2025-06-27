@@ -1,0 +1,77 @@
+{
+  "site": {
+    "title": "Project H x Utotech",
+    "favicon": "/img/utotech-logo.png",
+    "metaDescription": "โครงการพัฒนาซอฟต์แวร์ FightFlow System by Project H Muay Thai CRM & Wellness Platform (ชื่ออย่างไม่เป็นทางการ)..."
+  },
+  "navbar": {
+    "logo": "/img/utotech-logo.png",
+    "brandColor": "tomato"
+  },
+  "carousel": {
+    "subtitle": "โปรเจคพัฒนาและจัดการองกรค์",
+    "titleMain": "Fight Flow",
+    "titleSub": "Smart Project H Muay Thai Gym",
+    "features": [
+      "ระบบจัดการสมาชิก",
+      "ระบบจัดการตารางเวลา",
+      "ระบบจัดการขาย-จองคอร์สเรียน",
+      "ระบบเชื่อมต่อ POS & Line OA",
+      "ระบบจัดการอุปกรณ์"
+    ]
+  },
+  "features": [
+    {
+      "icon": "bi bi-people-fill",
+      "title": "Customer",
+      "desc": "ระบบสมัครจัดการสมาชิกทั้งเก่า-ใหม่ พร้อมสามารถ tracking ลูกค้าทุกท่านที่เข้ามาใช้งานได้อย่างทั่วถึง"
+    },
+    {
+      "icon": "bi bi-bar-chart-line-fill",
+      "title": "Purchase & Payment",
+      "desc": "ระบบจัดการการขาย-จองคอร์สเรียนตรวจสลิป และ การจ่ายเงินผ่านทางออนไลน์"
+    },
+    {
+      "icon": "bi bi-pin-angle-fill",
+      "title": "Booking",
+      "desc": "ระบบจัดการและลงเวลา สำหรับครูมวยและลูกค้าเพื่อตรวจเช็คการเข้าใช้ง่ายและจองผ่านทางออนไลน์"
+    },
+    {
+      "icon": "bi bi-shop",
+      "title": "Inventory & Security",
+      "desc": "ระบบจัดการคลังอุปกรณ์ สินค้า ขายหรือยืม พร้อมรองรับระบบสแกนและประตูอัตโนมัติ"
+    }
+  ],
+  "roi": [
+    {
+      "icon": "bi bi-cash",
+      "title": "Reduced cost",
+      "desc": "ลดพนักงานหน้าเคาเตอร์หรือพนักงานในส่วนของจัดการดูแลระบบหลังบ้านเนื่องจากมีระบบเข้ามาช่วย"
+    },
+    {
+      "icon": "bi bi-shield-slash-fill",
+      "title": "Reduced Error & Miscommunication",
+      "desc": "ลดความผิดพลาดที่เกิดจากความผิดพลาดของการกรอกข้อมูลแบบแมนนวลหรือเกิดจากมนุษย์ได้"
+    },
+    {
+      "icon": "bi bi-clock-history",
+      "title": "Reduced work-time",
+      "desc": "ลดระยะเวลาการทำงานในทุกส่วนของที่ระบบรองรับ เช่นการจองคอร์ส การจัดการคลังอุปกรณ์ ฯลฯ"
+    },
+    {
+      "icon": "bi bi-cash-stack",
+      "title": "Income Growth Up",
+      "desc": "เพิ่มรายได้จากคอร์ส เนื่องจากลูกค้าสามารถจองคอร์สได้สะดวกขึ้น"
+    },
+    {
+      "icon": "bi bi-briefcase",
+      "title": "Scale Business Up & Support Multi-Branch",
+      "desc": "รองรับการซิงค์ข้อมูลเก่าจากที่มีอยู่เข้าระบบ พร้อม import/export"
+    },
+    {
+      "icon": "bi bi-display-fill",
+      "title": "Brand Empowerment",
+      "desc": "สะท้อนภาพลักษณ์องค์กรยุคใหม่ ด้วยระบบจัดการดิจิทัล"
+    }
+  ]
+}
